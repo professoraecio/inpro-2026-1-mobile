@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         idadeNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
-            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                idadeTextView.setText("Idade Selecionada: " + i);
+            public void onValueChange(NumberPicker numberPicker, int valorAnterior, int valorAtual) {
+                idadeTextView.setText("Idade Selecionada: " + valorAtual);
             }
         });
 
