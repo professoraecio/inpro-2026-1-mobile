@@ -33,10 +33,12 @@ public class MainActivity extends AppCompatActivity {
         personagensNumberPicker.setMinValue(0);
         personagensNumberPicker.setMaxValue(personagens.length - 1);
 
+
+
         personagensNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
-            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                String personagemSelecionado = personagens[i];
+            public void onValueChange(NumberPicker numberPicker, int valorAnterior, int valorAtual) {
+                String personagemSelecionado = personagens[valorAtual];
                 personagemTextView.setText(personagemSelecionado);
                 if(personagemSelecionado.equalsIgnoreCase("Pato Donald")){
                     personagemImageView.setImageResource(R.drawable.donald);
