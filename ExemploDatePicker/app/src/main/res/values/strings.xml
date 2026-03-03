@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Exemplo Date Picker</string>
+
+    <string name="label_escolhe_data">Escolher Data</string>
+    <string name="label_data_escolhida">Data Escolhida</string>
+
+</resources>
