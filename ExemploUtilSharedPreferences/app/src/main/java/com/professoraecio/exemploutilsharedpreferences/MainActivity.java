@@ -22,7 +22,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void salvar(View view){
-        Persistencia.setUsuario(this,usuarioEditText.getText().toString());
+        Persistencia.setUsuario(
+                this,
+                usuarioEditText.getText().toString()
+        );
     }
 
     public void carregar(View view){
