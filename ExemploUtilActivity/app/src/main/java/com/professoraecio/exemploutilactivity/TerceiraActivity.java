@@ -7,15 +7,15 @@ import android.view.View;
 
 import com.professoraecio.exemploutilactivity.util.UtilActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class TerceiraActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_terceira);
     }
 
-    public void irSegunda(View view){
+    public void voltar(View view){
         UtilActivity.mudarActivity(this,SegundaActivity.class);
     }
 }
