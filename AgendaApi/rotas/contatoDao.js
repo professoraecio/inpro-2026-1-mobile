@@ -100,4 +100,78 @@ router.get('/getAll', (req, res, next) => {
     });
 });
 
+/*
+http://localhost:3000/api.agenda/contato-dao/update
+{
+'   "id_contato" : 1,
+    "nome" : "nome",
+    "fone" : "fone",
+    "email" : "email"
+}
+*/
+router.post('/update', (req, res, next) => {
+    const { id_contato, nome, fone, email } = req.body
+    const contato = { id_contato, nome, fone, email }
+    mysql.getConnection((error, conn) => {
+        if (error) {
+            return res.status(500).send({
+                error: error,
+                response: null
+            });
+        }
+        conn.query(
+            'UPDATE contato SET nome = ?, fone = ? , email = ? WHERE id = ?;',
+            [contato.nome, contato.fone, contato.email , contato.id_contato],
+            (error, restultado, field) => {
+                conn.release();
+                if (error) {
+                    return res.status(500).send({
+                        error: error,
+                        response: null
+                    });
+                }
+                res.status(200).send({
+                    response: 'Contato atualizado com sucesso!',
+                    'Dados do contato' : contato
+                });
+            }
+        );
+    });
+});
+
+/*
+http://localhost:3000/api.agenda/contato-dao/delete
+{
+   "id_contato" : 1
+}
+*/
+router.post('/delete', (req, res, next) => {
+    const { id_contato } = req.body
+    const contato = { id_contato }
+    mysql.getConnection((error, conn) => {
+        if (error) {
+            return res.status(500).send({
+                error: error,
+                response: null
+            });
+        }
+        conn.query(
+            'DELETE FROM contato WHERE id = ?;',
+            [contato.id_contato],
+            (error, restultado, field) => {
+                conn.release();
+                if (error) {
+                    return res.status(500).send({
+                        error: error,
+                        response: null
+                    });
+                }
+                res.status(201).send({
+                    response: 'Contato excluido com sucesso!'
+                });
+            }
+        );
+    });
+});
+
 module.exports = router;
