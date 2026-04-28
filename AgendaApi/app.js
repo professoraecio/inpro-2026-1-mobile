@@ -7,6 +7,9 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 
+const contatoDao = require('./rotas/contatoDao');
+app.use(URL_BASE + '/contato-dao',contatoDao);
+
 // rota default/welcome/inicial/padrão
 // http://localhost:3000/api.agenda
 app.use(URL_BASE,(req,res,next) => {
