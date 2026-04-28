@@ -34,11 +34,42 @@ router.post('/create', (req, res, next) => {
                     });
                 }
                 res.status(201).send({
-                    response : 'Contato cadastrado com sucesso!',
-                    id_contato : restultado.insertId
+                    response: 'Contato cadastrado com sucesso!',
+                    id_contato: restultado.insertId
                 });
             }
         );
+    });
+});
+
+// http://localhost:3000/api.agenda/contato-dao/getId?id=1
+router.get('/getId', (req, res, next) => {
+    const reqUrl = url.parse(req.url);
+    const queryParams = queryString.parse(reqUrl.query);
+    const param = queryParams.id;
+    mysql.getConnection((error, conn) => {
+        if (error) {
+            return res.status(500).send({
+                error: error,
+                response: null
+            });
+        }
+        conn.query(
+            'SELECT * FROM contato WHERE id = ?;',
+            [param],
+            (error, resultado, fields) => {
+                conn.release();
+                if (error) {
+                    return res.status(500).send({
+                        error: error,
+                        response: null
+                    });
+                }
+                return res.status(200).send({
+                    response : resultado
+                });
+            }
+        )
     });
 });
 
