@@ -8,10 +8,14 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.professoraecio.agendamobile.R;
+import com.professoraecio.agendamobile.model.Contato;
+
+import java.util.ArrayList;
 
 public class ListaContatosActivity extends AppCompatActivity {
 
     private ListView listView;
+    ArrayList<Contato> contatos = new ArrayList<Contato>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
