@@ -39,12 +39,14 @@
             android:id="@+id/salvarButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="editar"
             android:text="Editar" />
 
         <Button
             android:id="@+id/excluirButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="excluir"
             android:text="Excluir" />
     </LinearLayout>
 
