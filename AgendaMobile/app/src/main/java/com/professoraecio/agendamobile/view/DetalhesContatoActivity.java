@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.professoraecio.agendamobile.R;
+import com.professoraecio.agendamobile.api.ContatoApi;
 import com.professoraecio.agendamobile.model.Contato;
 
 public class DetalhesContatoActivity extends AppCompatActivity {
@@ -37,11 +39,21 @@ public class DetalhesContatoActivity extends AppCompatActivity {
     }
 
     public void editar(View view){
-
+        Intent intent = new Intent(this,
+                AdicionarEditarContatoActivity.class);
+        intent.putExtra("contato",contato);
+        startActivity(intent);
     }
 
     public void excluir(View view){
-
+        ContatoApi contatoApi = new ContatoApi();
+        String response = contatoApi.excluir(contato);
+        Toast.makeText(this,
+                response,
+                Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this,
+                ListaContatosActivity.class);
+        startActivity(intent);
     }
 
 }
