@@ -3,8 +3,6 @@ package com.professoraecio.agendamobile.http;
 import android.os.StrictMode;
 
 import android.util.Log;
-import com.professoraecio.agendamobile.libs.*;
-
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
